@@ -348,8 +348,12 @@ public class Model extends JSplitPane {
 					if (entryName.endsWith(".class")) {
 						getLabel().setText("Extracting: " + name);
 						String internalName = StringUtilities.removeRight(entryName, ".class");
-						TypeReference type = metadataSystem.lookupType(internalName);
-						extractClassToTextPane(type, name, path, null);
+						try {
+							TypeReference type = metadataSystem.lookupType(internalName);
+							extractClassToTextPane(type, name, path, null);
+						} catch (IllegalStateException lol) {
+							Luyten.showExceptionDialog("Shit is happening!", lol);
+						}
 					} else {
 						getLabel().setText("Opening: " + name);
 						try (InputStream in = state.jarFile.getInputStream(entry);) {
