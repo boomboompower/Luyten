@@ -25,15 +25,15 @@ jobs:
     - name: Upload Luyten jar
       uses: actions/upload-artifact@v2
       with:
-        name: latest-release
+        name: luyten
         path: target/*.jar
     - name: Upload Luyten lib jar
       uses: actions/upload-artifact@v2
       with:
-        name: latest-release
+        name: luyten-libs
         path: target/*-lib.jar
     - name: Upload Luyten exe
       uses: actions/upload-artifact@v2
       with:
-        name: latest-release
+        name: luyten-exe
         path: target/*.exe
